@@ -1,4 +1,4 @@
-package lv.venta;
+package lv.venta.model;
 
 public class Product {
 	private int id;
