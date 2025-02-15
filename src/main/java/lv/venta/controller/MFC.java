@@ -3,9 +3,8 @@ package lv.venta.controller;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import ch.qos.logback.core.model.Model;
 
 @Controller
 public class MFC {
@@ -22,6 +21,7 @@ public class MFC {
 			System.out.println("ir izsaukusies simple funkcija");
 			Random rand = new Random();
 			String data = "Kristers: " + rand.nextInt(0,100);
+			
 			model.addAttribute("package", data);
 			return "simple_page2";
 		}
