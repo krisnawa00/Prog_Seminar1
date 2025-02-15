@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import lv.venta.model.Product;
+
 @Controller
 public class MFC {
 
@@ -25,6 +27,12 @@ public class MFC {
 			model.addAttribute("package", data);
 			return "simple_page2";
 		}
-		
+		@GetMapping("/navsimple")
+		public String getControllerGetProduct(Model model) {
+			
+		Product testProduct = new Product ("Tomats", "Garsigs", 0.99f, 5);
+		model.addAttribute("package", testProduct);
+		return "how-one-PRODUCT-PAGE";
+		}
 		
 }
