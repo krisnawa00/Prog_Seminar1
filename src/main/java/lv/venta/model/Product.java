@@ -1,5 +1,11 @@
 package lv.venta.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,25 +15,26 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+@Table (name = "Product")
+@Entity
 public class Product {
 	@Setter(value = AccessLevel.NONE)
+	@Id
+	@Column(name = "Id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name = "Title")
 	private String title;
+	@Column(name = "Description")
 	private String desc;
+	@Column(name = "Price")
 	private float cena;
+	@Column(name = "Quantity")
 	private int quantity;
-	@Setter(value = AccessLevel.NONE)
-	@Getter(value = AccessLevel.NONE)
-	private static int counter = 0;
-	
-	public void setId() {
-		id = counter;
-		counter++;
-	}
-	
+
 	public Product(String inputTitle, String inputDesc, float inputPrice, int inputQuantity) {
-		setId();
+	
 		setTitle(inputTitle);
 		setDesc(inputDesc);
 		setCena(inputPrice);
