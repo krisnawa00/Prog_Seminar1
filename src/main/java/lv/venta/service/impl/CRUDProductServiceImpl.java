@@ -23,14 +23,24 @@ public class CRUDProductServiceImpl implements ICRUDProductService{
 
 	@Override
 	public ArrayList<Product> retrieveAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (prodRepo.count()==0) {
+				throw new Exception ("Tabula nav ierakstu");
+		}
+		ArrayList<Product> allProducts = (ArrayList<Product>) prodRepo.findAll();
+		return allProducts;
 	}
 
 	@Override
 	public Product retrieveById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(id<0) {
+			
+			throw new Exception ("Id nevar but negativs");
+		}
+		if(!prodRepo.existsById(id)) {
+			throw new Exception ("Produkts ar tadu id nepastav!");
+		}
+		Product retrievedProduct = prodRepo.findById(id).get();
+		return retrievedProduct;
 	}
 
 	@Override
