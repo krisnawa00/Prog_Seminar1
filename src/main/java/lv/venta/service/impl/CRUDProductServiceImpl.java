@@ -45,13 +45,22 @@ public class CRUDProductServiceImpl implements ICRUDProductService{
 
 	@Override
 	public void updateById(int id, float price, int quantity) throws Exception {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void deleteById(int id) throws Exception {
-		// TODO Auto-generated method stub
+		if(id<0) {
+			
+			throw new Exception ("Id nevar but negativs");
+		}
+		if(!prodRepo.existsById(id)) {
+			throw new Exception ("Produkts ar tadu id nepastav!");
+		}
+		prodRepo.deleteById(id);;
+		
+	}
 		
 	}
 
