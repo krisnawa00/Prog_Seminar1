@@ -8,7 +8,7 @@ public interface ICRUDProductService {
 	
 	
 	//C
-	public abstract void create(String title, String desc, float cena,int quantity);
+	public abstract void create(String title, String desc, float cena,int quantity) throws Exception;
 	
 	//R
 	

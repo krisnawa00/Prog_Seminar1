@@ -16,9 +16,22 @@ public class CRUDProductServiceImpl implements ICRUDProductService{
 	private ProductRepo prodRepo;
 	
 	@Override
-	public void create(String title, String desc, float cena, int quantity) {
-		// TODO Auto-generated method stub
-		
+	public void create(String title, String desc, float cena, int quantity) throws Exception {
+		if(title == null || desc == null || cena < 0 || quantity == 0 ) {
+			throw new Exception ("Error");
+		}
+		if(prodRepo.existsByTitleAndDescAndCena(title, desc, cena)) 
+		{
+			Product existingProduct = prodRepo.findByTitleAndDescAndCena(title, desc, cena);
+			
+			int newQuantity = existingProduct.getQuantity() + quantity;
+			existingProduct.setQuantity(newQuantity);
+			prodRepo.save(existingProduct);
+		}
+		else
+		{
+
+		}
 	}
 
 	@Override
@@ -51,7 +64,7 @@ public class CRUDProductServiceImpl implements ICRUDProductService{
 
 	@Override
 	public void deleteById(int id) throws Exception {
-		if(id<0) {
+		if(id < 0) {
 			
 			throw new Exception ("Id nevar but negativs");
 		}
@@ -64,4 +77,4 @@ public class CRUDProductServiceImpl implements ICRUDProductService{
 		
 	}
 
-}
+
