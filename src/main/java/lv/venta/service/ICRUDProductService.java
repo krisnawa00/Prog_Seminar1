@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import lv.venta.model.Product;
 
-public interface ICRUDProduct {
+public interface ICRUDProductService {
 	
 	
 	//C
