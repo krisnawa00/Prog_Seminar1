@@ -82,6 +82,11 @@ public class ProductCrudController {
 		return "show-error-page";
 	}
 	
+	@GetMapping("/update/{id}")
+	public String getControllerUpdateProduct (Product product, Model model) {
+		
+	}
+	
 	}
 	
 }
