@@ -81,14 +81,59 @@ public class ProductCrudController {
 		model.addAttribute("package", e.getMessage());
 		return "show-error-page";
 	}
+	}
 	
-	@GetMapping("/update/{id}")
-	public String getControllerUpdateProduct (Product product, Model model) {
+	@GetMapping("/update/{id}")//localhost:8080/product/crud/update/2
+	public String getControllerUpdateProductById(@PathVariable(name = "id") int id, Model model)
+	{
+		try
+		{
+			Product foundproduct = prodService.retrieveById(id);
+			model.addAttribute("product", foundproduct);//tiks padots līdzi jau atrastais produkts
+			return "update-product";//parādit update-product.html lapu
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "show-error-page";//parādīs show-error-page.html ar izmesto kļūdu
+		}
+	}
+
+	
+	
+	@PostMapping("/update/{id}")
+	public String postControllerUpdateProductById (Product product, @PathVariable(name = "id") int id, Model model) {//iegūs jau updeitoto produktu šeit
+		if(product == null) {
+			model.addAttribute("package", "Nav iegūts aizpildītais produkts");
+			return "show-error-page";//parādīs show-error-page.html ar izmesto kļūdu
+		}
+		try
+		{
+			prodService.updateById(id, product.getCena(), product.getQuantity());
+			return "redirect:/product/crud/all";
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "show-error-page";//parādīs show-error-page.html ar izmesto kļūdu
+		}
+
 		
 	}
-	
+	@GetMapping("/delete/{id}")//locahost:8080/product/crud/delete/2 
+	public String getControllerDeleteById(@PathVariable(name = "id") int id, Model model) {
+		try
+		{
+			prodService.deleteById(id);
+			model.addAttribute("package", prodService.retrieveAll());
+			return "show-all-product-page";
+		}
+		catch (Exception e) {
+			model.addAttribute("package", e.getMessage());
+			return "show-error-page";//parādīs show-error-page.html ar izmesto kļūdu
+		}
+
+		
 	}
-	
-}
+	}
+
 
 

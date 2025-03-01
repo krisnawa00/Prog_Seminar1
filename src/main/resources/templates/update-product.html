@@ -4,28 +4,28 @@
 <body>
 	<p> Lūdzu ievadi jaunu produktu:</p>
 
-	<form action="#"  th:action="@{/product/crud/create/${__${id}__}" th:object="${product}" method="post" >
+	<form action="#"  th:action="@{/product/crud/update/__${id}__}" th:object="${product}" method="post" >
 		
 		<table>
 			<tr>
-				<td> Ieraksti produkta nosaukumu </td>	
+				<td> Red produkta nosaukumu </td>	
 			
-				<td> <input type="text" th:field="*{title}"   /> </td>
+				<td> <input type="text" th:field="*{title}"   disabled="true "/> </td>
 			</tr>	
 			
 			<tr>
 				<td>
-				Ieraksti produkta aprakstu:
+				Red produkta aprakstu:
 				</td>
 				
 				<td>
-					<input type="text" th:field="*{desc}"   />
+					<input type="text" th:field="*{desc}"  disabled="true" />
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-				Ieraksti produkta cenu:
+				Red produkta cenu:
 				</td>
 							
 				<td>
@@ -35,7 +35,7 @@
 			
 			<tr>
 				<td>
-				Ieraksti produkta daudzumu:
+				Red produkta daudzumu:
 				</td>
 							
 				<td>
