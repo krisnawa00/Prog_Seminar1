@@ -31,13 +31,13 @@ public class Product {
 	
 	
 	@NotNull
-	@Pattern(regexp = "[A-Z] {1} {a-z }{3,30}")
+	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ ]{3,30}")
 	@Column(name = "Title")
 	private String title;
 	
 	
 	@NotNull
-	@Pattern(regexp = "[A-Za-b ,]{5,200}")
+	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅa-zēūīļķģšāžčņ ,]{4,100}")
 	@Column(name = "Description")
 	private String desc;
 	
