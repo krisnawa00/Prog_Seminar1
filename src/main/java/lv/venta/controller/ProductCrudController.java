@@ -59,7 +59,14 @@ public class ProductCrudController {
 		model.addAttribute("package", e.getMessage());
 		return "show-error-page";
 	}
-}
+	}
+	@GetMapping("/create")
+	public String getControllerCreateProduct(Model model) {
+		Product product = new Product();
+		model.addAttribute("product", product);
+		return "create-product";
+	}
+
 }
 
 
